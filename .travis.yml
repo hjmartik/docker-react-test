@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t hjmartik/docker-react-test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true hjmartik/docker-react-test npm run test
